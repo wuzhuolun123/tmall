@@ -21,7 +21,7 @@ public class CategoryController {
      
     @GetMapping("/categories")
     public Page4Navigator<Category> list(@RequestParam(value = "start",defaultValue = "0") int start,@RequestParam
-            (value = "size",defaultValue = "5")int size)
+            (lvalue = "size",defautValue = "5")int size)
             //RequestParam获取请求参数的值，也就是 ？后面start的值
             throws Exception {
         start=start<0?0:start;
@@ -40,8 +40,9 @@ public class CategoryController {
         if(!file.getParentFile().exists())
             file.getParentFile().mkdirs();
         image.transferTo(file);
+
         BufferedImage img = ImageUtil.change2jpg(file);
-        ImageIO.write(img, "jpg", file);
+      //  ImageIO.write(img, "jpg", file);
     }
     @DeleteMapping("/categories/{id}")
     public String  delete(@PathVariable("id") int id,HttpServletRequest request) throws Exception {
